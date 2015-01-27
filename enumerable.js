@@ -26,7 +26,7 @@ function wordCount(str) {
 
     // If the key does not exist
     if ( !wordsCountObject[ evalWord ] ) {
-      // Create key from each item to be placed in the WordsCountObject
+      // Create key from each item to be placesd in the WordsCountObject
       wordsCountObject[ evalWord ] = 0;
     }
     // If the object key already exists, increment the count
@@ -45,42 +45,6 @@ function wordCount(str) {
 
 var myWords = 'A cat, a mouse, and the Cat Captain.'
 wordCount(myWords);
-
-//
-// function wordCount(str) {
-//   // Array to Deliver the words Counted in
-//   var result = [];
-//
-//   // Function to Contruct the Word Objects
-//   function CreateWord(spec) {
-//     return {
-//       word: spec.word,
-//       count: spec.count
-//     }
-//   }
-//
-//   // Function to assess words and store them as objects
-//   var wordsToCount = str.split(' ');
-//
-//   wordsToCount.forEach(function(strItem) {
-//     // word is the current indexed word
-//     // result.forEach(function(countIndex) {
-//     for (var i=0; i < wordsToCount.length; ++i ) {
-//
-//       // if we have a new word object increment it's value
-//       if (wordsToCount[i].word === strItem) {
-//         ++countIndex.value;
-//       } else {
-//         // if we need a new word object, create it
-//         result.push( CreateWord({ word: strItem, count: 0 }) );
-//       } // End of If/ELSE
-//
-//     }; // end of result.forEach
-//
-//   }); // end of str.split
-//   return result;
-// }
-
 
 
 // function Sayable() {
@@ -122,10 +86,8 @@ Range Enumerable
 //   var result = {
 //     enumerate: function(callback) {
 //       for(var x = fromX; x <= toY; ++x) {
-//         callback(x);
+//         callback(x, options);
 //       }
-//
-//       callback(x, options);
 //     }
 //   };
 //
@@ -144,3 +106,43 @@ Range Enumerable
 //
 //   };
 // }
+
+/*
+Rand Enumerable
+Create an Object that creates Random Number within a given scope
+*/
+
+function RandEnumerable(fromX, toY) {
+  var cancelled = false;
+  // Object Constructor
+  var options = {
+    cancel: function () {
+      cancelled = true;
+    },
+    count: 0
+  }
+
+  var result = {
+    enumerateRand: function (callback) {
+      var i = 0;
+      while (!cancelled){
+        i++;
+        toY = toY - fromX;
+        var randNum = Math.round(Math.random()*toY) + fromX;
+        ++options.count;
+        callback(randNum, options);
+      }
+    }
+  }
+
+  return result;
+}
+
+var testRand = RandEnumerable(1, 100000);
+testRand.enumerateRand(function (item, options) {
+  console.log(item);
+  if (options.count > 50){
+    console.log('ok, that\'s it')
+    options.cancel();
+  }
+});
