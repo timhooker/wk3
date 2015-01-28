@@ -105,11 +105,13 @@ h1 {
 h4 {
   color: #fff;
   font-style: italic;
+  margin-top: 3em;
 }
 .text-wrapper {
   position: relative;
   width: 66%;
   margin: 2em auto;
+  min-height: 6em;
 }
 
 .text-input {
@@ -122,6 +124,7 @@ h4 {
   font-size: 1.25em;
   padding: 1em;
   border-radius: 5px;
+  resize: none;
   overflow: hidden;
 }
 
@@ -133,11 +136,17 @@ h4 {
   word-break: break-word;
 }
 
-.text-input:focus {
+.text-input:focus,
+input:focus {
   outline: none;
 }
+
 
 .characters-remain {
   color: #fff;
   text-align: right;
+}
+
+input {
+  font-size: 1.25em;
 }

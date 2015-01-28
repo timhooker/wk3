@@ -1,25 +1,28 @@
 (function(){
 
-  var textArea = document.querySelector('.text-input');
-  textArea.value = '';
-  var textMirror = document.querySelector('.text-mirror');
-  var textRemaining = document.querySelector('.characters-remain');
-  var textLimit = 200;
+  var textAreas = document.querySelectorAll('textArea[maxlength]');
 
-  // textArea.addEventListener('keydown', function(e){
-  //   textMirror.innerText = textArea.value;
-  // });
-  textArea.addEventListener('keyup', function(e){
-    textMirror.innerText = textArea.value;
-    var char = charRemain();
-    if (char ===0 ) {
-      // not sure
-
-    }
-  });
-  function charRemain () {
-    var charactersRemain = textLimit - textArea.value.length;
-    textRemaining.innerText = 'You have ' + charactersRemain + ' characters remaining';
-    return charactersRemain;
+  for(var i = 0; i < textAreas.length; ++i) {
+    maxLengthTextArea(textAreas[i]);
   }
+
+  function maxLengthTextArea(textArea) {
+    var textMirror = textArea.parentNode.querySelector('.text-mirror');
+    var textRemaining = textArea.parentNode.querySelector('.characters-remain');
+    var textLimit = textArea.getAttribute('maxlength');
+    charRemain();
+    function charRemain () {
+      textMirror.innerText = textArea.value;
+      var charactersRemain = textLimit - textArea.value.length;
+      textRemaining.innerText = 'You have ' + String(charactersRemain) + ' characters remaining';
+      if (charactersRemain = 0) {
+        textRemaining.color = red;
+      }
+      return charactersRemain;
+    }
+
+    textArea.addEventListener('keyup', charRemain);
+
+  }
+
 })();
