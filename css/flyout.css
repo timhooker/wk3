@@ -22,6 +22,7 @@ h1 {
   color: #fff;
   display: inline-block;
   width: 30%;
+  min-width: 12em;
   text-align: left;
   position: relative;
 }
@@ -147,6 +148,15 @@ input:focus {
   text-align: right;
 }
 
+.dynamic-list {
+  text-align: center;
+}
+
+.dynamic-input-item {
+  margin: .5em auto;
+}
+
 input {
   font-size: 1.25em;
+  display: block;
 }
