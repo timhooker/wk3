@@ -5,7 +5,7 @@
 
 body {
   text-align: center;
-  background-image: url('../img/vertical_cloth.png');
+  background-image: url('../img/swirl_pattern.png');
   background-color: #4c4c4e;
   padding: 4em;
   width: 100%;
@@ -15,7 +15,13 @@ body {
 
 h1 {
   font-size: 3em;
-  color: #ddd;
+  color: #4c4c4e;
+  font-weight: 200;
+}
+h4 {
+  color: #8c8c8e;
+  font-style: italic;
+  margin-top: 3em;
 }
 
 .dropdown {
@@ -103,11 +109,7 @@ h1 {
   font-size: 1.25em;
 }
 
-h4 {
-  color: #fff;
-  font-style: italic;
-  margin-top: 3em;
-}
+
 .text-wrapper {
   position: relative;
   width: 66%;
@@ -116,6 +118,7 @@ h4 {
 }
 
 .text-input {
+  color: #aaa;
   position: absolute;
   top: 0;
   bottom: 1em;
@@ -144,7 +147,7 @@ input:focus {
 
 
 .characters-remain {
-  color: #fff;
+  color: #aaa;
   text-align: right;
 }
 
@@ -154,9 +157,10 @@ input:focus {
 
 .dynamic-input-item {
   margin: .5em auto;
-}
-
-input {
   font-size: 1.25em;
   display: block;
+  border-radius: 3px;
+  padding: .5em;
+  border: 1px #666 solid;
+  color: #aaa;
 }
